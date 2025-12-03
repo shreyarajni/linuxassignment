@@ -1,3 +1,275 @@
+Linux Programming: Assignment-1
+NAME- Shreya Rajni 
+SECTION-3A 
+ROLL NO.-59 
+USN- ENG24CY0161 
+
+
+
+1.What is Linux Operating System (OS)? List three pros and cons of it. (CO1) 
+Linux is an open-source operating system based on UNIX. It is responsible for managing the hardware of a computer, running the users' applications, and supporting multi-user and multitasking environments. 
+Pros: It is a free product and its source code is available to only view, very secure and is extremely stable which is the reason why servers are running on it. 
+Cons: There isn't a full range of commercial apps that support Linux, command-based work is hard for beginners, and additionally, in some cases, there may be no hardware drivers available. 
+
+2.Differentiate between Linux, Mac, Android, and Windows OS with at least six unique features.
+Linux is an open source operating system mainly used in servers. It is also possible to use it on desktops, but its use is mostly limited to environments jnvolving technology. Linux is completely customizable, offers high security, and software installation is carried out via package managers such as apt or yum. 
+MacOS is a proprietary operating system built only for Apple devices. Its primary features are good UI, tight security, and excellent integration with the rest of the Apple ecosystem. The advantage of customization is limited because Apple is controlling both hardware and software. 
+Same goes for Android. Despite this, it is mainly utilized in smartphones and other touchscreen gadgets. The operating system is open but Google is the maintainer. To install apps, one has to use Play Store or APK files. 
+On the other hand, Windows is a proprietary operating system tailored for typical desktop usage. It is compatible with a plethora of software, games, and drivers. Also, for installation purposes, it uses EXE/MSI files. Additionally, this platform is the most commonly found in offices and homes. 
+In simple words: Linux = most customizable, Mac = polished but restricted, Android = mobile Linux, Windows = user-friendly and widely supported. 
+3.Why is Linux preferred for Mainframe Servers for legacy application? Give three out-of-the-box technical reasons.
+One of the reasons that explains why Linux is preferred is that it allows changes at the kernel level to be done which is how the system can be adjusted for heavy mainframe workloads. Another good point is very robust process isolation which is due to use of tools like cgroups, namespaces, and SELinux. Also, the reason for the longest uptime is another one - Linux is able to operate non-stop for several years without rebooting, which is a must for old enterprise applications. 
+4.Explain the structure of the Linux File System with proper diagram. Note: you can use the tree command to find it out.
+Linux has a tree-like file system that goes all the way back to the root /. 
+/bin is the folder that has the basic commands, /sbin is the folder with system commands, /etc is the folder that has the configuration files, /home is the folder for user files, /var is the folder that holds log files, /boot is the folder for kernel and bootloader files, /lib is the folder for libraries, and /tmp is the folder for temporary data. 
+Small diagram: 
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib
+├── sbin
+├── tmp
+└── var
+5. How Red Hat earns money if Linux is open-source 
+Red Hat's main source of revenue is enterprise subscriptions where the companies pay for the official updates, security patches, long-term support, and certifications. They also offer paid training (like RHCE), cloud platforms such as OpenShift, and automation tools such as Ansible. In a nutshell, what they do is not selling Linux but selling the support, the reliability, and the enterprise services. 
+6. Command for today's date/time 
+date 
+7. Command to check system uptime 
+uptime 
+8. Difference between shutdown -h now and halt 
+The command shutdown -h now shuts the system down in a safe manner by stopping the various running services and unmounting the disks. 
+Halt on the other hand is the command that stops the system right away and thus may not unmount discs properly. Therefore, shutdown -h now is the safer option. 
+9. init 0 vs shutdown -h (which is safer) 
+The command init 0 changes the system to runlevel 0 and shuts down the system very quickly. The command shutdown -h does a clean and a graceful shut down by warning the users and closing the services. Therefore, shutdown -h is safer. 
+10. Problems if a server is powered off without proper shutdown 
+Corruption of file systems is one of the consequences that might occur after such an event, open transactions in databases could be lost, logs may be in an inconsistent state, and some hardware components such as hard drives can get damaged due to the abrupt removal of power. 
+Brainstorming 
+a) Can we build our own OS using Linux kernel? 
+Yes, the Linux kernel is an open-source project and hence anyone is free to compile it and create their own operating system. 
+b) Challenges in building your own OS 
+Deep knowledge of kernel internals is required, hardware drivers are not that easy to figure out because they are often not documented, keeping the security updates coming is not an easy task, and creating a complete package ecosystem takes a lot of time. 
+c) Engineers in India working in this field 
+Among the Indian contributors are Balasubramaniam Mani (IBM Linux performance), Siddhesh Poyarekar (Red Hat, glibc), Srivatsa S. Bhat (Linux memory management), and Anil Venkatesh (kernel debugging & file ‍‌‍‍‌‍‌‍‍‌systems)
+
+
+
+Linux Programming: Assignment-2
+NAME- Shreya Rajni 
+SECTION-3A 
+ROLL NO.-59 
+USN- ENG24CY0161 
+
+
+1.What does the command pwd, whoami and hostname display? (CO1)
+pwd gives the directory path of the current folder you are in. 
+whoami prints the name of the user that is logged in. 
+hostname gives the name of your computer/machine in the ‍‌‍‍‌‍‌‍‍‌network. 
+
+2. Write the command to create a directory named “project” inside the /home/student folder and keep three .txt file into it. Give output snapshot. (CO1)
+mkdir /home/student/project
+touch /home/student/project/file1.txt /home/student/project/file2.txt /home/student/project/file3.txt
+OUTPUT:
+ls /home/student/project
+file1.txt  file2.txt  file3.txt
+
+3. Explain the difference between absolute path and relative path with proper examples. (CO2) 
+An‍‌‍‍‌‍‌‍‍‌ absolute path always begins at the root / and indicates the entire path to a file or folder.
+Example:<br>/home/student/project/file1.txt
+A relative path is starting from the directory you are and it doesn't refer to the root /.
+Example:<br>If you are in /home/student directory, then<br>cd project<br>is a relative ‍‌‍‍‌‍‌‍‍‌path.
+
+4. What command will give you the already executed command traces in the terminal. Give output snapshot. (CO1) 
+The command is:
+History
+Sample Output:
+1  ls
+2  cd /home
+3  mkdir project
+4  history
+
+5. Compare the working functionality of find and locate command. Which one is faster and why? (CO1)
+find‍‌‍‍‌‍‌‍‍‌ is a real-time tool that goes through the filesystem step by step. It is slower but always accurate as it takes the actual disk into consideration. 
+on the other hand, locate depends on a pre-built database (mlocate.db). It is very fast as it doesn't go to the disk to search but rather to the database. 
+Therefore locate is quicker as it refers to a stored index rather than performing a ‍‌‍‍‌‍‌‍‍‌scan. 
+
+
+ 6. Which command is used to modify file permissions in Linux? Give an example. (CO1)
+
+Bash
+chmod 755 file.txt
+
+
+7. A file has permissions -rw -r- -r- -. What does this mean? (CO1) 
+-rw-r--r-- stands for: 
+Owner: reading + writing 
+Group: reading only 
+Others: reading only 
+Only the owner is allowed to change the ‍‌‍‍‌‍‌‍‍‌file
+
+
+
+8. Explain the difference between chown and chgrp with an example. (CO1) 
+chown changes the owner of a file. 
+Example: 
+chown student file.txt 
+
+chgrp changes only the group of the file. 
+Example: 
+chgrp staff ‍‌‍‍‌‍‌‍‍‌file.txt</p 
+
+
+9. A file needs to be accessible by multiple users but only writable by the owner. How will 
+Use: 
+chmod 644 filename 
+Owner: read + write 
+Group: read 
+Others: ‍‌‍‍‌‍‌‍‍‌read 
+
+10.How do you check the manual page for any Linux commands? (CO1)
+Use the man command:
+man ls
+This opens the manual page for the command.
+
+
+
+
+
+Linux Programming: Assignment-3 
+NAME- Shreya Rajni 
+SECTION-3A 
+ROLL NO.-59 
+USN- ENG24CY0161 
+
+1.Distinguish between man and whatis commands? Justify with proper example. (CO1) 
+Man‍‌‍‍‌‍‌‍‍‌ provides a complete manual page for a command. It includes detailed explanation, options, and examples. Whatis, on the other hand, provides only a one-line summary of the command.
+
+Example:<br> 
+
+man ls → will open a full manual which will explain in detail what ls is.<br> 
+
+whatis ls → will print something like: ls (1) - list directory ‍‌‍‍‌‍‌‍‍‌contents.
+
+‍‌‍‍‌‍‌‍2.Use the tee command to save the output of ls -l into a file while also displaying it. (CO4) 
+ls -l | tee output.txt
+
+3.Explain with an example how the tee command can be used in logging. (CO4) 
+The tee command is helpful when you want to see the output on the screen and save it to a log file at the same time.
+Example:
+ping google.com | tee pinglog.txt
+This displays the ping output on the terminal and also stores it in pinglog.txt for later review. This is commonly used for debugging or collecting logs.
+
+
+4.List the steps involved in installing Ubuntu 25.04 LTS on Oracle VirtualBox. (CO2)
+Get‍‌‍‍‌‍‌‍‍‌ the Ubuntu 25.04 ISO from the official Ubuntu site.
+Get‍‌‍‍‌‍‌‍‍‌ the Ubuntu 25.04 ISO from the official Ubuntu site.
+Launch VirtualBox and hit the New button to set up a new virtual machine.
+Put in a name and select Linux → Ubuntu (64-bit).
+Set aside memory (4GB at least is recommended).
+Make a virtual hard disk (20GB or more).
+Go to the VM settings → Storage → and insert the Ubuntu ISO into the Optical Drive.
+Power the VM on; Ubuntu setup will be there.
+Choose Install Ubuntu, select keyboard layout, and choose installation type.
+Set up a username and password.
+Finish the installation and power off the ‍‌‍‍‌‍‌‍‍‌VM.
+
+5. During Ubuntu OS installation, you face a Kernel Panic Error. How would you troubleshoot it? (CO3) 
+If‍‌‍‍‌‍‌‍‍‌ a kernel panic pops up while you are installing, testing these options can help:
+First of all, make sure that the ISO file is not corrupted, and if it is, download it again.
+Give more RAM to your virtual machine, or add more cores to the CPU.
+In the VM configuration, turn on PAE/NX, VT-x/AMD-V or hardware virtualization.
+Switch the VirtualBox graphics controller to VMSVGA.
+In the VM settings, turn off any USB or network devices that you are not using.
+Would the installation start if you try Safe Graphics ‍‌‍‍‌‍‌‍‍‌Mode?
+6. Write the command to display the system’s hostname? How to change hostname using sysctl command? (CO1) 
+Display hostname:
+hostname
+
+Change hostname using sysctl:
+sudo sysctl kernel.hostname=newname
+
+
+7. Which command is used to show the calendar of the year 1984 with August month? (CO1) 
+Command to show calendar of year 1984 with August month (CO1)
+cal 8 1984
+
+8. Write a command to display system uptime and logged-in users together. (CO3) 
+Command to display system uptime and logged-in users together (CO3)
+w
+(or)
+uptime && who
+
+9. Use the find command to list all “.c” files in /home/user. (CO1) 
+all .c files in /home/user (CO1)
+find /home/user -name "*.c"
+
+10. How do you change file permissions to allow only the owner to read and write? (CO1)
+Change file permissions to allow only the owner to read and write (CO1)
+chmod 600 filename
+
+
+
+
+Assignment 4
+NAME- Shreya Rajni 
+SECTION-3A 
+ROLL NO.-59 
+USN- ENG24CY0161 
+1. Using grep + tee to extract usernames from /etc/passwd (CO4)
+Usernames‍‌‍‍‌‍‌‍‍‌ can be found in each line before the first colon.
+Command:
+grep -o '^[^:]+' /etc/passwd | tee usernames.txt
+With this, the usernames are extracted and saved in the file usernames.txt, and at the same time, the screen displays the ‍‌‍‍‌‍‌‍‍‌usernames.________________________________________
+2. Troubleshooting a binary not found in $PATH using which, find, locate (CO3)
+Initially,‍‌‍‍‌‍‌‍‍‌ try to check if the command exists in any directories that are listed in $PATH by using: 
+which commandname 
+If it is not found, then do the manual searching of the filesystem: 
+find / -name commandname 2>/dev/null 
+Alternatively, you can use the faster locate database: 
+locate commandname 
+Once you have found the actual binary location, you can add it to PATH by changing the: 
+export ‍‌‍‍‌‍‌‍‍‌PATH=$PATH:/path/to/binary 
+________________________________________
+3. Pipeline to find .log files modified in last 24 hours in /var/log and save to log_report.txt (CO4)
+find /var/log -name "*.log" -mtime -1 | tee log_report.txt
+________________________________________
+4. Difference between shutdown -r now and reboot (CO1)
+shutdown -r now performs a clean shutdown and then restarts the system after stopping services safely.
+reboot immediately restarts the system and may skip some shutdown routines on certain systems.
+Therefore, shutdown -r now is the safer method.
+________________________________________
+5. Using tee to debug a script that outputs both stdout and stderr (CO4)
+You can capture both normal output and error messages by redirecting stderr to stdout and then using tee.
+Example:
+./myscript.sh 2>&1 | tee debuglog.txt
+This shows everything on screen and saves it into debuglog.txt.
+________________________________________
+6. Three real-world applications of Linux in industries (CO2)
+1.	Servers and Cloud Platforms – Most web servers, data centers, and cloud systems (AWS, Azure, Google Cloud) run Linux.
+2.	Embedded Systems – Smart TVs, routers, car infotainment systems, industrial machines use Linux-based firmware.
+3.	Cybersecurity and Networking – Tools like Kali Linux, firewalls, intrusion detection systems, and network appliances are Linux-based.
+________________________________________
+7. Difference between application, system, and utility software in Linux (CO2)
+Application software refers to programs used by end-users, such as browsers, editors, media players, or office applications.
+System software includes the kernel and core components that manage hardware and provide system services.
+Utility software consists of helper tools like file managers, backup tools, compression commands, and disk check utilities that support the system but are not full applications.
+________________________________________
+8. Key differences between open-source and proprietary operating systems (CO2)
+Open-source OS provides full access to source code, can be modified freely, and is distributed without licensing restrictions.
+Proprietary OS hides its source code, restricts modification, and requires paid licenses.
+Open-source systems rely on community contributions, while proprietary systems depend on a single company for updates and support.
+________________________________________
+9. Command to display system kernel version (CO3)
+uname -r
+________________________________________
+10. Difference between head and tail commands (text processing)
+head shows the first few lines of a file (default 10).
+tail shows the last few lines of a file.
+They help preview the beginning or end of large text files.
+
+
 Assignment 5 
 
 NAME- Shreya Rajni 
