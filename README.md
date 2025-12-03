@@ -895,6 +895,104 @@ f
 read -p "Enter number: " n 
 fact=1 
 for ((i=1;i<=n;i++)) 
+
+Linux Programming: Assignment-10
+NAME- Shreya Rajni 
+SECTION-3A 
+ROLL NO.-59 
+USN- ENG24CY0161 
+
+
+Linux‍‌‍‍‌‍‌‍‍‌ Programming: rsync and rsnapshot
+
+1) What? Why? How?
+
+rsync:
+
+- What: rsync is a quick and versatile tool that can be used for copying/syncing files and directories both locally and remotely.
+
+- Why: By only copying the changes that are made to the files, it greatly reduces the amount of data that needs to be transferred.
+
+- How: The tool employs the "delta-transfer algorithm" to break down file chunks and only the parts that have been changed are copied.
+
+rsnapshot:
+
+- What: rsnapshot is a utility for creating snapshots of the file system, which employs rsync and hard links to make the backups efficient.
+
+- Why: For the purpose of automating periodic backups (hourly, daily, weekly) so that very little storage space is used.
+
+- How: The tool achieves this by using rsync + hard links so that duplicates of the same files are not stored, thus, allowing multiple snapshots to take up very little disk space.
+
+2) Command Output Details
+
+rsync Output:
+
+- Gives information about files that have been transferred including their sizes, speeds, and progress.
+
+- Provides summary information: total files, transferred files, data sent/received, and speed.
+
+rsnapshot Output:
+
+- Indicates the backup operations (sync, copy, rotate).
+
+- Records the created snapshots, directories and any errors.
+
+- The verbose mode shows the rsync operations that are performed in each snapshot cycle.
+
+3) Option Flags
+
+rsync Common Flags:
+
+* -a : Archive mode (recursive, preserve permissions & metadata) 
+
+* -v : Verbose output 
+
+* -z : Compress data during transfer 
+
+* -P : Show progress + allow partial transfer 
+
+* --delete : Delete files on destination not present in source 
+
+* -r : Recursive copy 
+
+* -e ssh : Transfer over SSH
+
+rsnapshot Important Flags (in config file or command):
+
+* rsnapshot configtest : Check the configuration for errors
+
+* rsnapshot sync : Perform the sync operation
+
+* rsnapshot daily/weekly/monthly : Run backup level
+
+* retain : Sets the number of snapshots
+
+* snapshot_root : The directory where the snapshots are stored
+
+* rsync_long_args : Provide custom rsync options
+
+4) History
+
+rsync History:
+
+- The tool was built by Andrew Tridgell and Paul Mackerras
+
+- The first version was made available in 1996.
+
+- The main purpose was to create the efficient "rsync algorithm" that would greatly decrease the amount of data that needs to be transferred over a network.
+
+- The tool is now a standard part of the Linux, macOS, and server ecosystems and is used for backups and mirroring.
+
+rsnapshot History:
+
+- The author of the program is Nathan Rosenquist.
+
+- It was first released around 2003.
+
+- To provide incremental snapshots, it was designed by combining features of rsync + hard links.
+
+- It is a tool that system administrators commonly use for backup automation ‍‌‍‍‌‍‌‍‍‌purposes.
+
 do 
 fact=$((fact*i)) 
 done 
